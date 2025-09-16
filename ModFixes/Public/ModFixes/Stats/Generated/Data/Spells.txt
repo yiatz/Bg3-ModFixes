@@ -1,5 +1,11 @@
 new entry "Target_SacredFlame"
 type "SpellData"
 using "Target_SacredFlame"
-data "SpellSuccess" "DealDamage(LevelMapValue(SYR_D8Cantrip)+2,Radiant,Magical);IF(Tagged('FIEND') or Tagged('UNDEAD')):DealDamage(LevelMapValue(SYR_D4Cantrip),Radiant,Magical)"
-data "SpellFail" "DealDamage((LevelMapValue(SYR_D8Cantrip)+2)/2),Radiant,Magical);IF(Tagged('FIEND') or Tagged('UNDEAD')):DealDamage((LevelMapValue(SYR_D4Cantrip))/2,Radiant,Magical)"
+data "SpellSuccess" "IF(not Tagged('FIEND') and not Tagged('UNDEAD')):DealDamage(LevelMapValue(SYR_D8Cantrip)+2,Radiant,Magical);IF(Tagged('FIEND') or Tagged('UNDEAD')):DealDamage(LevelMapValue(SYR_D8Cantrip)+LevelMapValue(SYR_D4Cantrip)+2,Radiant,Magical)"
+data "SpellFail" "IF(not Tagged('FIEND') and not Tagged('UNDEAD')):DealDamage((LevelMapValue(SYR_D8Cantrip)+2)/2,Radiant,Magical);IF(Tagged('FIEND') or Tagged('UNDEAD')):DealDamage((LevelMapValue(SYR_D8Cantrip)+LevelMapValue(SYR_D4Cantrip)+2)/2,Radiant,Magical)"
+
+new entry "Target_MAG_WeaponAction_FlashingDawn"
+type "SpellData"
+using "Target_MAG_WeaponAction_FlashingDawn"
+data "SpellSuccess" "TARGET:DealDamage(MainMeleeWeapon, MainMeleeWeaponDamageType); TARGET:DealDamage(ProficiencyBonus, Radiant); TARGET:IF(not SavingThrow(Ability.Constitution, 13)):ApplyStatus(BLINDED, 100, 3); AOE:IF(not SavingThrow(Ability.Constitution, 13)):ApplyStatus(BLINDED, 100, 3);ExecuteWeaponFunctors(MainHand)"
+data "TargetConditions" "not Self() and not Dead() and not Ally()"
