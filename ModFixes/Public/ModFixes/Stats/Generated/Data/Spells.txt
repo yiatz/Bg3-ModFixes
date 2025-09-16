@@ -1,5 +1,5 @@
 new entry "Target_SacredFlame"
 type "SpellData"
 using "Target_SacredFlame"
-data "SpellSuccess" "DealDamage(LevelMapValue(SYR_D8Cantrip)+2,Radiant,Magical);IF(Tagged('FIEND') or Tagged('UNDEAD')):DealDamage(2d4,Radiant,Magical)"
-data "SpellFail" "DealDamage((LevelMapValue(SYR_D8Cantrip)+2)/2),Radiant,Magical);IF(Tagged('FIEND') or Tagged('UNDEAD')):DealDamage((2d4)/2,Radiant,Magical)"
+data "SpellSuccess" "DealDamage(LevelMapValue(SYR_D8Cantrip)+2,Radiant,Magical);IF(Tagged('FIEND') or Tagged('UNDEAD')):DealDamage(LevelMapValue(SYR_D4Cantrip),Radiant,Magical)"
+data "SpellFail" "DealDamage((LevelMapValue(SYR_D8Cantrip)+2)/2),Radiant,Magical);IF(Tagged('FIEND') or Tagged('UNDEAD')):DealDamage((LevelMapValue(SYR_D4Cantrip))/2,Radiant,Magical)"
